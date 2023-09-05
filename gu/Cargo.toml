@@ -1,0 +1,7 @@
+[package]
+name = "gu"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "gu"
+repository = "https://github.com/franticxx/crates/gu"

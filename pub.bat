@@ -1,6 +1,6 @@
 @echo off
 
-cargo new %1 --lib
+@REM cargo new %1 --lib
 
 cd %1
 

@@ -1,0 +1,7 @@
+[package]
+name = "hu"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "hu"
+repository = "https://github.com/franticxx/crates/hu"
