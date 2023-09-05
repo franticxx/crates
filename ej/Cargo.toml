@@ -1,0 +1,7 @@
+[package]
+name = "ej"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "ej"
+repository = "https://github.com/franticxx/crates/ej"

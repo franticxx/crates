@@ -3,7 +3,11 @@ from itertools import permutations
 from concurrent.futures import ThreadPoolExecutor
 
 
+count = 0
+
+
 def sea(word):
+    global count
     headers = {
         "authority": "crates.io",
         "accept": "*/*",
@@ -17,13 +21,15 @@ def sea(word):
     names = [i["name"] for i in response.json()["crates"]]
     if not word in names:
         print(word)
+    count += 1
+    print(f"\r{count}")
 
 
 words = "a、b、c、d、e、f、g、h、i、j、k、l、m、n、o、p、q、r、s、t、u、v、w、x、y、z".split("、")
 w2 = ["".join(i) for i in permutations(words, 2)]
 w3 = ["".join(i) for i in permutations(words, 3)]
-words += w2 + w3
+words = w2 + w3
 
-with ThreadPoolExecutor(10) as thread:
+with ThreadPoolExecutor(32) as thread:
     for word in words:
         thread.submit(sea(word))
