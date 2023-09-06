@@ -43,10 +43,10 @@ def m3(ls):
 words = "a、b、c、d、e、f、g、h、i、j、k、l、m、n、o、p、q、r、s、t、u、v、w、x、y、z".split("、")
 w2 = ["".join(i) for i in m2(words)]
 w3 = ["".join(i) for i in m3(words)]
-words = w2 + w3
+words = w3
 
 
 with ThreadPoolExecutor(32) as thread:
-    for i, word in enumerate(words[442:646]):
-        thread.submit(sea(word))
-        # print(i, word)
+    for i, word in enumerate(words[:500]):
+        #         thread.submit(sea(word))
+        print(word)

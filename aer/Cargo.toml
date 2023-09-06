@@ -1,0 +1,7 @@
+[package]
+name = "aer"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "aer"
+repository = "https://github.com/franticxx/crates/aer"
