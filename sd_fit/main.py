@@ -2,7 +2,9 @@ import numpy as np
 import polars as pl
 import matplotlib.pyplot as plt
 from iwo import IWO
+from scipy import interpolate
 from utils.stats import r2_score, var
+from utils.linalg import skew
 
 
 def normal(miu, sigma, x, max_y):
@@ -22,21 +24,22 @@ idx = np.argmax(r)
 def target_func(xn):
     if xn[0] <= 0:
         return 1e9
-    y_pred = normal(miu=lam[idx], sigma=xn[0], x=lam, max_y=xn[1])
+    # y_pred = normal(miu=lam[idx], sigma=xn[0], x=lam, max_y=xn[1])
+    y_pred = skew(x=lam, y=r, s1=xn[2], s2=[3], idx=idx)
+    y_pred = y_pred / y_pred.max() * r.max()
+    # f = interpolate.interp1d(lam, r)
+    # y_pred = f(lam_)
     v = var(r, y_pred)
     return v
 
 
-iwo = IWO(
-    func=target_func,
-    min_x=0,
-    max_x=10,
-    gene_size=2,
-)
+iwo = IWO(func=target_func, min_x=0, max_x=2, gene_size=4, gmax=10, is_show=True)
 xn, v = iwo.evlove()
 print(xn)
 print(v)
-t = normal(lam[idx], xn[0], lam, xn[1])
+# t = normal(lam[idx], xn[0], lam, xn[1])
+t = skew(x=lam, y=r, s1=xn[2], s2=[3], idx=idx)
+t = t / t.max() * r.max()
 print(r2_score(r, t))
 
 plt.plot(lam, r)

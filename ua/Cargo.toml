@@ -1,0 +1,7 @@
+[package]
+name = "ua"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "ua"
+repository = "https://github.com/franticxx/crates/ua"

@@ -2,12 +2,6 @@ import os
 import time
 
 a = """
-fv
-fy
-gk
-gu
-hu
-hw
 ih
 ij
 ik
@@ -30,7 +24,6 @@ ly
 lz
 nh
 nj
-nk
 nw
 ny
 oj

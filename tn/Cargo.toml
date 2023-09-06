@@ -1,0 +1,7 @@
+[package]
+name = "tn"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+description = "tn"
+repository = "https://github.com/franticxx/crates/tn"

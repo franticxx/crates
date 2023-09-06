@@ -21,15 +21,32 @@ def sea(word):
     names = [i["name"] for i in response.json()["crates"]]
     if not word in names:
         print(word)
-    count += 1
-    print(f"\r{count}")
+
+
+def m2(ls):
+    res = []
+    for i in ls:
+        for j in ls:
+            res.append(i + j)
+    return res
+
+
+def m3(ls):
+    res = []
+    for i in ls:
+        for j in ls:
+            for k in ls:
+                res.append(i + j + k)
+    return res
 
 
 words = "a、b、c、d、e、f、g、h、i、j、k、l、m、n、o、p、q、r、s、t、u、v、w、x、y、z".split("、")
-w2 = ["".join(i) for i in permutations(words, 2)]
-w3 = ["".join(i) for i in permutations(words, 3)]
+w2 = ["".join(i) for i in m2(words)]
+w3 = ["".join(i) for i in m3(words)]
 words = w2 + w3
 
+
 with ThreadPoolExecutor(32) as thread:
-    for word in words:
+    for i, word in enumerate(words[442:646]):
         thread.submit(sea(word))
+        # print(i, word)
